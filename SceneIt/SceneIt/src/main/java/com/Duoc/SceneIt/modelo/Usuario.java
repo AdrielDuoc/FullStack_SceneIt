@@ -1,7 +1,7 @@
 package com.Duoc.SceneIt.modelo;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,29 +11,30 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "peliculas")
-public class Peliculas {
+@Table(name = "usuario")
+
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_pelicula;
+    private Integer id_usuario;
 
     @NotBlank
-    private String titulo_pelicula;
+    private String nombre_usuario;
 
     @NotBlank
-    private String director;
+    private String apellido_usuario;
 
     @NotBlank
-    private String descripcion;
+    private String email_usuario;
 
     @NotBlank
-    private String genero_pelicula;
+    private String contraseña_usuario;
 
     @NotBlank
-    private String duracion;
+    private String fecha_creacion_cuenta_usuario;
 
-    @NotBlank
-    private String fechaEstreno_pelicula;
+    @NotNull
+    private int edad_usuario;
 
 }
