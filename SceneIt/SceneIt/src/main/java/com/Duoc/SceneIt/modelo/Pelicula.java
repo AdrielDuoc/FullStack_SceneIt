@@ -22,7 +22,7 @@ public class Pelicula {
     private String titulo_pelicula;
 
     @NotBlank
-    private String autor;
+    private Autor autor;
 
     @NotBlank
     private String descripcion;
