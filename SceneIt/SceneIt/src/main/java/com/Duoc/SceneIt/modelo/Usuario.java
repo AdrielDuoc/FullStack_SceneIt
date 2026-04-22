@@ -31,13 +31,10 @@ public class Usuario {
     @NotBlank
     private String contraseña_usuario;
 
-    @NotBlank
-    private int fecha_creacion_cuenta_usuario;
+    @NotNull
+    private Integer fecha_creacion_cuenta_usuario;
 
     @NotNull
-    private int edad_usuario;
-
-    @NotNull
-    private Productora productora;
+    private Integer edad_usuario;
 
 }

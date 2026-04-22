@@ -17,7 +17,7 @@ public class Productora {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_productora;
+    private Integer id_productora;
 
     @NotBlank
     private String nombre_productora;

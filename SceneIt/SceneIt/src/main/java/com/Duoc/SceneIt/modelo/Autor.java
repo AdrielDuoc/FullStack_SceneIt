@@ -17,14 +17,13 @@ public class Autor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Integer id_Autor;
+    private Integer id_autor;
 
     @NotBlank
-    private String nombre_Autor;
+    private String nombre_autor;
 
     @NotNull
-    private int Edad_Autor;
+    private int edad_autor;
 }
 
 
