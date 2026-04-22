@@ -35,7 +35,7 @@ public class Pelicula {
     private String duracion;
 
     @NotBlank
-    private String fechaEstreno_pelicula;
+    private int fechaEstreno_pelicula;
 
     @NotNull
     private Productora productora;

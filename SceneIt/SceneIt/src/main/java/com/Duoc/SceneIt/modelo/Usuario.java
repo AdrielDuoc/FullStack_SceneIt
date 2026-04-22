@@ -32,7 +32,7 @@ public class Usuario {
     private String contraseña_usuario;
 
     @NotBlank
-    private String fecha_creacion_cuenta_usuario;
+    private int fecha_creacion_cuenta_usuario;
 
     @NotNull
     private int edad_usuario;
