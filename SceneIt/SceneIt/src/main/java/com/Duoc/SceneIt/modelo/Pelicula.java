@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "peliculas")
-public class Peliculas {
+public class Pelicula {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Peliculas {
     private String titulo_pelicula;
 
     @NotBlank
-    private String director;
+    private String autor;
 
     @NotBlank
     private String descripcion;
@@ -35,5 +35,7 @@ public class Peliculas {
 
     @NotBlank
     private String fechaEstreno_pelicula;
+
+    
 
 }
