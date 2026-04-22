@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuarios")
 
 public class Usuario {
 
@@ -36,5 +36,8 @@ public class Usuario {
 
     @NotNull
     private int edad_usuario;
+
+    @NotNull
+    private Productora productora;
 
 }
