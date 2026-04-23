@@ -11,20 +11,23 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
     
-    public Usuario BuscarTodosLosUsuarios () {
+    public Usuario getUsuario () {
         return (Usuario) usuarioRepository.findAll();
     }
 
-    public Usuario BuscarUsuarioPorId (Integer id) {
+    public Usuario getUsuarioId (Integer id) {
         return usuarioRepository.findById(id).orElse(null);
     }
 
-    public Usuario GuardarUsuario (Usuario usuario) {
+    public Usuario saveUsuario (Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
-    public boolean ExisteUsuario (Integer id) {
-        return usuarioRepository.existsById(id);
+    public Usuario updateUsuario(Usuario usuario){
+        if(!usuarioRepository.existsById(usuario.getId_usuario())){
+            return null;
+        }
+        return usuarioRepository.save(usuario);
     }
 
     public void EliminarUsuario (Integer id) {
