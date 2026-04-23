@@ -1,4 +1,5 @@
 package com.Duoc.SceneIt.modelo;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
