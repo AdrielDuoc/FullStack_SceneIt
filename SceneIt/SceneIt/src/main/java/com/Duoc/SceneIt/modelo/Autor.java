@@ -1,6 +1,10 @@
 package com.Duoc.SceneIt.modelo;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -23,7 +27,7 @@ public class Autor {
     private String nombre_autor;
 
     @NotNull
-    private int edad_autor;
+    private Integer edad_autor;
 }
 
 
