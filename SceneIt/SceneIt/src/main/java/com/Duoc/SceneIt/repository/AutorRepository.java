@@ -5,6 +5,4 @@ import org.springframework.stereotype.Repository;
 import com.Duoc.SceneIt.modelo.Autor;
 
 @Repository
-public interface AutorRepository extends JpaRepository<Autor, Integer> {
-
-}
+public interface AutorRepository extends JpaRepository<Autor, Integer> { }

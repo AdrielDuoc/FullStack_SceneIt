@@ -5,6 +5,4 @@ import org.springframework.stereotype.Repository;
 import com.Duoc.SceneIt.modelo.Productora;
 
 @Repository
-public interface ProductoraRepository extends JpaRepository<Productora, Integer>{
-    
-}
+public interface ProductoraRepository extends JpaRepository<Productora, Integer> { }

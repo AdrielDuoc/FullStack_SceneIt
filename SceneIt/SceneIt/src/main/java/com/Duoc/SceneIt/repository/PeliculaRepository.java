@@ -5,6 +5,4 @@ import org.springframework.stereotype.Repository;
 import com.Duoc.SceneIt.modelo.Pelicula;
 
 @Repository
-public interface PeliculaRepository extends JpaRepository<Pelicula,Integer>{
-
-}
+public interface PeliculaRepository extends JpaRepository<Pelicula,Integer> { }
