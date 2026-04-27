@@ -19,12 +19,12 @@ public class Watchlist {
     private Integer id_watchlist;
 
     @NotNull
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_pelicula")
     private Pelicula pelicula;
 
     @NotNull
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 

@@ -23,7 +23,7 @@ public class Pelicula {
     private String titulo_pelicula;
 
     @NotNull
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_autor")
     private Autor autor;
 
@@ -41,7 +41,7 @@ public class Pelicula {
     private Integer fechaEstreno_pelicula;
 
     @NotNull
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_productora")
     private Productora productora;
 
