@@ -41,7 +41,7 @@ public class ProductoraController{
     }
 
     @PostMapping
-    public ResponseEntity<Productora> saveProductora(@PathVariable Productora productora){
+    public ResponseEntity<Productora> saveProductora(@Valid @RequestBody Productora productora){
         return ResponseEntity.status(HttpStatus.CREATED).body(productoraService.saveProductora(productora));
     }
 
