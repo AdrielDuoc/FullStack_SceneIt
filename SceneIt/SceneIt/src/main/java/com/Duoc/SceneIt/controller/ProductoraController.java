@@ -14,41 +14,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Duoc.SceneIt.modelo.Autor;
-import com.Duoc.SceneIt.service.AutorService;
+import com.Duoc.SceneIt.modelo.Productora;
+import com.Duoc.SceneIt.service.ProductoraService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("api/v1/autores")
-public class AutorController {
+@RequestMapping("api/v1/productoras")
+public class ProductoraController{
 
     @Autowired
-    private AutorService autorService;
+    private ProductoraService productoraService;
 
     @GetMapping
-    public ResponseEntity<List<Autor>> getAllAutores(){
-        return ResponseEntity.ok(autorService.getAutor());
+    public ResponseEntity<List<Productora>> getAllProductoras(){
+        return ResponseEntity.ok(productoraService.getProductora());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Autor> findAutor(@PathVariable Integer id){
-        Autor autor = autorService.getAutorId(id);
-        if(autor == null){
+    public ResponseEntity<Productora> findProductora(@PathVariable Integer id){
+        Productora productora = productoraService.getProductoraId(id);
+        if(productora == null){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(autor);
+        return ResponseEntity.ok(productora);
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<Autor> saveAutor(@PathVariable Autor autor){
-        return ResponseEntity.status(HttpStatus.CREATED).body(autorService.saveAutor(autor));
+    public ResponseEntity<Productora> saveProductora(@PathVariable Productora productora){
+        return ResponseEntity.status(HttpStatus.CREATED).body(productoraService.saveProductora(productora));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Autor> updateAutor(@PathVariable Integer id, @Valid @RequestBody Autor autor){
-        autor.setId_autor(id);
-        Autor actualizado = autorService.updateAutor(autor);
+    public ResponseEntity<Productora> updateProductora(@PathVariable Integer id, @Valid @RequestBody Productora productora){
+        productora.setId_productora(id);
+        Productora actualizado = productoraService.updateProductora(productora);
         if(actualizado == null){
             return ResponseEntity.notFound().build();
         }
@@ -56,8 +56,12 @@ public class AutorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> removeAutor(@PathVariable Integer id){
-        autorService.deleteAutor(id);
+    public ResponseEntity<Void> removeProductora(@PathVariable Integer id){
+        productoraService.deleteProductora(id);
         return ResponseEntity.noContent().build();
     }
 }
+
+ 
+
+

@@ -1,7 +1,5 @@
 package com.Duoc.SceneIt.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,41 +12,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Duoc.SceneIt.modelo.Autor;
-import com.Duoc.SceneIt.service.AutorService;
+import com.Duoc.SceneIt.modelo.Usuario;
+import com.Duoc.SceneIt.service.UsuarioService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("api/v1/autores")
-public class AutorController {
+@RequestMapping("api/v1/usuarios")
+public class UsuarioController {
 
     @Autowired
-    private AutorService autorService;
+    private UsuarioService usuarioService;
 
     @GetMapping
-    public ResponseEntity<List<Autor>> getAllAutores(){
-        return ResponseEntity.ok(autorService.getAutor());
+    public ResponseEntity<Usuario> getAllUsuarios(){
+        return ResponseEntity.ok(usuarioService.getUsuario());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Autor> findAutor(@PathVariable Integer id){
-        Autor autor = autorService.getAutorId(id);
-        if(autor == null){
+    public ResponseEntity<Usuario> findUsuario(@PathVariable Integer id){
+        Usuario usuario = usuarioService.getUsuarioId(id);
+        if(usuario == null){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(autor);
+        return ResponseEntity.ok(usuario);
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<Autor> saveAutor(@PathVariable Autor autor){
-        return ResponseEntity.status(HttpStatus.CREATED).body(autorService.saveAutor(autor));
+    public ResponseEntity<Usuario> saveUsuario(@PathVariable Usuario usuario){
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.saveUsuario(usuario));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Autor> updateAutor(@PathVariable Integer id, @Valid @RequestBody Autor autor){
-        autor.setId_autor(id);
-        Autor actualizado = autorService.updateAutor(autor);
+    public ResponseEntity<Usuario> updateUsuario(@PathVariable Integer id, @Valid @RequestBody Usuario usuario){
+        usuario.setId_usuario(id);
+        Usuario actualizado = usuarioService.updateUsuario(usuario);
         if(actualizado == null){
             return ResponseEntity.notFound().build();
         }
@@ -56,8 +54,9 @@ public class AutorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> removeAutor(@PathVariable Integer id){
-        autorService.deleteAutor(id);
+    public ResponseEntity<Void> removeUsuario(@PathVariable Integer id){
+        usuarioService.deleteUsuario(id);
         return ResponseEntity.noContent().build();
     }
 }
+
