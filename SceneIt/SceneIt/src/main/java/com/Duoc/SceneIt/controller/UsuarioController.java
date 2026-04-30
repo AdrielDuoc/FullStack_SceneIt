@@ -40,7 +40,7 @@ public class UsuarioController {
         return ResponseEntity.ok(usuario);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping
     public ResponseEntity<Usuario> saveUsuario(@PathVariable Usuario usuario){
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.saveUsuario(usuario));
     }

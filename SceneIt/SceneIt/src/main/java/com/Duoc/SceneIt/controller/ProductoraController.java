@@ -40,7 +40,7 @@ public class ProductoraController{
         return ResponseEntity.ok(productora);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping
     public ResponseEntity<Productora> saveProductora(@PathVariable Productora productora){
         return ResponseEntity.status(HttpStatus.CREATED).body(productoraService.saveProductora(productora));
     }
