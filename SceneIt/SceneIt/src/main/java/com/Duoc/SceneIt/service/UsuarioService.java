@@ -2,6 +2,9 @@ package com.Duoc.SceneIt.service;
 
 import com.Duoc.SceneIt.modelo.Usuario;
 import com.Duoc.SceneIt.repository.UsuarioRepository;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +14,8 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
     
-    public Usuario getUsuario () {
-        return (Usuario) usuarioRepository.findAll();
+    public List<Usuario> getUsuario () {
+        return usuarioRepository.findAll();
     }
 
     public Usuario getUsuarioId (Integer id) {

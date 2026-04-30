@@ -2,6 +2,9 @@ package com.Duoc.SceneIt.service;
 
 import com.Duoc.SceneIt.modelo.Watchlist;
 import com.Duoc.SceneIt.repository.WatchlistRepository;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +14,8 @@ public class WatchlistService {
     @Autowired
     private WatchlistRepository watchlistRepository;
 
-    public Watchlist getWatchlist () {
-        return (Watchlist) watchlistRepository.findAll();
+    public List<Watchlist> getWatchlist () {
+        return watchlistRepository.findAll();
     }
 
     public Watchlist saveWatchlist(Watchlist watchlist){

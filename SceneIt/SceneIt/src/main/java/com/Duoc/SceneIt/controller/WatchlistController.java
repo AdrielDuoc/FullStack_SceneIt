@@ -13,42 +13,42 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.Duoc.SceneIt.modelo.Watchlist;
 
-import com.Duoc.SceneIt.modelo.Autor;
-import com.Duoc.SceneIt.service.AutorService;
+import com.Duoc.SceneIt.service.WatchlistService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("api/v1/autores")
-public class AutorController {
+@RequestMapping("/api/v1/watchalist")
+public class WatchlistController {
 
     @Autowired
-    private AutorService autorService;
+    private WatchlistService watchlistService;
 
     @GetMapping
-    public ResponseEntity<List<Autor>> getAllAutores(){
-        return ResponseEntity.ok(autorService.getAutor());
+    public ResponseEntity<List<Watchlist>> getAllWatchlist(){
+        return ResponseEntity.ok(watchlistService.getWatchlist());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Autor> getUsuarioId(@PathVariable Integer id){
-        Autor autor = autorService.getAutorId(id);
-        if(autor == null){
+    public ResponseEntity<Watchlist> getWatchlistId(@PathVariable Integer id){
+        Watchlist watchlist = watchlistService.getWatchlistId(id);
+        if(watchlist == null){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(autor);
+        return ResponseEntity.ok(watchlist);
     }
 
     @PostMapping
-    public ResponseEntity<Autor> saveAutor(@Valid @RequestBody Autor autor){
-        return ResponseEntity.status(HttpStatus.CREATED).body(autorService.saveAutor(autor));
+    public ResponseEntity<Watchlist> saveWatchlist(@Valid @RequestBody Watchlist watchlist){
+        return ResponseEntity.status(HttpStatus.CREATED).body(watchlistService.saveWatchlist(watchlist));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Autor> updateAutor(@PathVariable Integer id, @Valid @RequestBody Autor autor){
-        autor.setId_autor(id);
-        Autor actualizado = autorService.updateAutor(autor);
+    public ResponseEntity<Watchlist> updateWatchlist(@PathVariable Integer id, @Valid @RequestBody Watchlist watchlist){
+        watchlist.setId_watchlist(id);
+        Watchlist actualizado = watchlistService.updateWatchlist(watchlist);
         if(actualizado == null){
             return ResponseEntity.notFound().build();
         }
@@ -56,8 +56,8 @@ public class AutorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAutor(@PathVariable Integer id){
-        autorService.deleteAutor(id);
+    public ResponseEntity<Void> deleteWatchlist(@PathVariable Integer id){
+        watchlistService.deleteWatchlist(id);
         return ResponseEntity.noContent().build();
     }
 }
