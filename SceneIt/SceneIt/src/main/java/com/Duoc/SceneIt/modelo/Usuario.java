@@ -1,6 +1,10 @@
 package com.Duoc.SceneIt.modelo;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -33,7 +37,7 @@ public class Usuario {
     private String contraseña_usuario;
 
     @NotNull
-    private Integer fecha_creacion_cuenta_usuario;
+    private String fecha_creacion_cuenta_usuario;
 
     @NotNull
     private Integer edad_usuario;

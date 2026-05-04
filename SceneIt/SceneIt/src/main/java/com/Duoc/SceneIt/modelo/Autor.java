@@ -26,6 +26,9 @@ public class Autor {
     @NotBlank
     private String nombre_autor;
 
+    @NotBlank
+    private String apellido_autor;
+
     @NotNull
     private Integer edad_autor;
 }
