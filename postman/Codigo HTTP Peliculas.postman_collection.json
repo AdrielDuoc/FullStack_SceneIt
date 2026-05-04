@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "437e9821-566e-467b-a404-45f5ef925b13",
+		"name": "Codigo HTTP Peliculas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener Todas Las Peliculas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/peliculas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"peliculas"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
