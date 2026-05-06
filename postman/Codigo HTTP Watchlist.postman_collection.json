@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "10496552-d856-47b4-811a-8f2a48b230c6",
-		"name": "New Collection",
+		"_postman_id": "bb268e39-4de1-465b-b5f1-2451fd1b1a85",
+		"name": "Codigo HTTP Watchlist",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Obtener todas las watchlist",
+			"name": "Obtener Todas Las Watchlist",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -26,7 +26,7 @@
 			"response": []
 		},
 		{
-			"name": "Guardar Watchlist",
+			"name": "Agregar Watchlist",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -67,7 +67,7 @@
 			"response": []
 		},
 		{
-			"name": "Actualizar watchlist",
+			"name": "Actualizar Watchlist",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -88,7 +88,7 @@
 			"response": []
 		},
 		{
-			"name": "Eliminar watchlist",
+			"name": "Borrar Watchlist",
 			"request": {
 				"method": "DELETE",
 				"header": [],

@@ -28,11 +28,13 @@ public class AutorController {
 
     @GetMapping
     public ResponseEntity<List<Autor>> getAllAutores(){
+        System.out.println("[AutorController] -> getAllAutores");
         return ResponseEntity.ok(autorService.getAutor());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Autor> getUsuarioId(@PathVariable Integer id){
+        System.out.println("[AutorController] -> getUsuarioId id=" + id);
         Autor autor = autorService.getAutorId(id);
         if(autor == null){
             return ResponseEntity.notFound().build();
@@ -42,11 +44,13 @@ public class AutorController {
 
     @PostMapping
     public ResponseEntity<Autor> saveAutor(@Valid @RequestBody Autor autor){
+        System.out.println("[AutorController] -> saveAutor");
         return ResponseEntity.status(HttpStatus.CREATED).body(autorService.saveAutor(autor));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Autor> updateAutor(@PathVariable Integer id, @Valid @RequestBody Autor autor){
+        System.out.println("[AutorController] -> updateAutor id=" + id);
         autor.setId_autor(id);
         Autor actualizado = autorService.updateAutor(autor);
         if(actualizado == null){
@@ -57,6 +61,7 @@ public class AutorController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> removeAutor(@PathVariable Integer id){
+        System.out.println("[AutorController] -> deleteAutor id=" + id);
         autorService.deleteAutor(id);
         return ResponseEntity.noContent().build();
     }

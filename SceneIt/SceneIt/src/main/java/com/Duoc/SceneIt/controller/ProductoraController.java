@@ -28,11 +28,13 @@ public class ProductoraController{
 
     @GetMapping
     public ResponseEntity<List<Productora>> getAllProductoras(){
+        System.out.println("[ProductoraController] -> getAllProductora");
         return ResponseEntity.ok(productoraService.getProductora());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Productora> findProductora(@PathVariable Integer id){
+    public ResponseEntity<Productora> getProductoraById(@PathVariable Integer id){
+        System.out.println("[ProductoraController] -> getProductoraById id=" + id);
         Productora productora = productoraService.getProductoraId(id);
         if(productora == null){
             return ResponseEntity.notFound().build();
@@ -42,11 +44,13 @@ public class ProductoraController{
 
     @PostMapping
     public ResponseEntity<Productora> saveProductora(@Valid @RequestBody Productora productora){
+        System.out.println("[ProductoraController] -> saveProductora");
         return ResponseEntity.status(HttpStatus.CREATED).body(productoraService.saveProductora(productora));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Productora> updateProductora(@PathVariable Integer id, @Valid @RequestBody Productora productora){
+        System.out.println("[ProductoraController] -> updateProductora id=" + id);
         productora.setId_productora(id);
         Productora actualizado = productoraService.updateProductora(productora);
         if(actualizado == null){
@@ -57,6 +61,7 @@ public class ProductoraController{
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> removeProductora(@PathVariable Integer id){
+        System.out.println("[ProductoraController] -> removeProductora id=" + id);
         productoraService.deleteProductora(id);
         return ResponseEntity.noContent().build();
     }

@@ -27,11 +27,13 @@ public class PeliculaController {
 
     @GetMapping
     public ResponseEntity<List<Pelicula>> getAllPeliculas() {
+        System.out.println("[PeliculaController] -> getAllPeliculas");
         return ResponseEntity.ok(peliculaService.getPelicula());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Pelicula> getPeliculaById(@PathVariable Integer id) {
+        System.out.println("[PeliculaController] -> getPeliculaById id=" + id);
         Pelicula pelicula = peliculaService.getPeliculaId(id);
         if (pelicula == null) {
             return ResponseEntity.notFound().build();
@@ -40,12 +42,14 @@ public class PeliculaController {
     }
 
     @PostMapping
-    public ResponseEntity<Pelicula> createPelicula(@Valid @RequestBody Pelicula pelicula) {
+    public ResponseEntity<Pelicula> savePelicula(@Valid @RequestBody Pelicula pelicula) {
+        System.out.println("[PeliculaController] -> savePelicula");
         return ResponseEntity.status(201).body(peliculaService.savePelicula(pelicula));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Pelicula> updatePelicula(@PathVariable Integer id, @Valid @RequestBody Pelicula pelicula) {
+        System.out.println("[PeliculaController] -> updatePelicula id=" + id);
         pelicula.setId_pelicula(id);
         Pelicula updatedPelicula = peliculaService.updatePelicula(pelicula);
         if (updatedPelicula == null) {
@@ -56,6 +60,7 @@ public class PeliculaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> removePelicula(@PathVariable int id) {
+        System.out.println("[PeliculaController] -> removePelicula id=" + id);
         peliculaService.deletePelicula(id);
         return ResponseEntity.noContent().build();
     }

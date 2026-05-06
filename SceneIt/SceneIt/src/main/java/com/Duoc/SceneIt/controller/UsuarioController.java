@@ -28,11 +28,13 @@ public class UsuarioController {
 
     @GetMapping
     public ResponseEntity<List<Usuario>> getAllUsuarios(){
+        System.out.println("[UsuarioController] -> getAllUsuarios");
         return ResponseEntity.ok(usuarioService.getUsuario());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> findUsuario(@PathVariable Integer id){
+    public ResponseEntity<Usuario> getUsuarioById(@PathVariable Integer id){
+        System.out.println("[UsuarioController] -> getUsuarioById id=" + id);
         Usuario usuario = usuarioService.getUsuarioId(id);
         if(usuario == null){
             return ResponseEntity.notFound().build();
@@ -42,11 +44,13 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<Usuario> saveUsuario(@Valid @RequestBody Usuario usuario){
+        System.out.println("[UsuarioController] -> saveUsuario");
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.saveUsuario(usuario));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> updateUsuario(@PathVariable Integer id, @Valid @RequestBody Usuario usuario){
+        System.out.println("[UsuarioController] -> updateUsuario id=" + id);
         usuario.setId_usuario(id);
         Usuario actualizado = usuarioService.updateUsuario(usuario);
         if(actualizado == null){
@@ -57,6 +61,7 @@ public class UsuarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> removeUsuario(@PathVariable Integer id){
+        System.out.println("[UsuarioController] -> removeUsuario id=" + id);
         usuarioService.deleteUsuario(id);
         return ResponseEntity.noContent().build();
     }

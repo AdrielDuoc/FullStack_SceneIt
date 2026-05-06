@@ -28,11 +28,13 @@ public class WatchlistController {
 
     @GetMapping
     public ResponseEntity<List<Watchlist>> getAllWatchlist(){
+        System.out.println("[WatchlistController] -> getAllWatchlist");
         return ResponseEntity.ok(watchlistService.getWatchlist());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Watchlist> getWatchlistId(@PathVariable Integer id){
+        System.out.println("[WatchlistController] -> getWatchlistById id=" + id);
         Watchlist watchlist = watchlistService.getWatchlistId(id);
         if(watchlist == null){
             return ResponseEntity.notFound().build();
@@ -42,11 +44,13 @@ public class WatchlistController {
 
     @PostMapping
     public ResponseEntity<Watchlist> saveWatchlist(@Valid @RequestBody Watchlist watchlist){
+        System.out.println("[WatchlistController] -> saveWatchlist");
         return ResponseEntity.status(HttpStatus.CREATED).body(watchlistService.saveWatchlist(watchlist));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Watchlist> updateWatchlist(@PathVariable Integer id, @Valid @RequestBody Watchlist watchlist){
+        System.out.println("[WatchlistController] -> updateWatchlist id=" + id);
         watchlist.setId_watchlist(id);
         Watchlist actualizado = watchlistService.updateWatchlist(watchlist);
         if(actualizado == null){
@@ -57,6 +61,7 @@ public class WatchlistController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteWatchlist(@PathVariable Integer id){
+        System.out.println("[WatchlistController] -> deleteWatchlist id=" + id);
         watchlistService.deleteWatchlist(id);
         return ResponseEntity.noContent().build();
     }
