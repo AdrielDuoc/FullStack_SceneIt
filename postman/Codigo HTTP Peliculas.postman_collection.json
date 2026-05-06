@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "437e9821-566e-467b-a404-45f5ef925b13",
+		"_postman_id": "2c743959-325f-432d-8496-f81eadc6477d",
 		"name": "Codigo HTTP Peliculas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -21,6 +21,89 @@
 						"api",
 						"v1",
 						"peliculas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Pelicula",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo_pelicula\": \"Rapidos y furiosos 6\",\r\n    \"autor\":{\r\n        \"id_autor\":2,\r\n        \"nombre_autor\":\"Matias\",\r\n        \"apellido_autor\":\"Vallejos\",\r\n        \"edad_autor\":25\r\n    },\r\n    \"descripcion\":\"Algo de pelicula\",\r\n    \"genero_pelicula\":\"Accion\",\r\n    \"duracion\":\"2 Hrs y 12 Minutos\",\r\n    \"fecha_estreno_pelicula\":\"20-05-2012\",\r\n    \"productora\":{\r\n        \"id_productora\":2,\r\n        \"nombre_productora\":\"Marvel\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/peliculas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"peliculas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Pelicula",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/peliculas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"peliculas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Peliculas",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"titulo_pelicula\": \"Rapidos y furiosos 8\",\r\n        \"autor\": {\r\n            \"id_autor\": 2,\r\n            \"nombre_autor\": \"Matias\",\r\n            \"apellido_autor\": \"Vallejos\",\r\n            \"edad_autor\": 25\r\n        },\r\n        \"descripcion\": \"Algo de pelicula\",\r\n        \"genero_pelicula\": \"Accion\",\r\n        \"duracion\": \"2 Hrs y 12 Minutos\",\r\n        \"fecha_estreno_pelicula\": \"20-05-2012\",\r\n        \"productora\": {\r\n            \"id_productora\": 2,\r\n            \"nombre_productora\": \"Marvel\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/peliculas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"peliculas",
+						"2"
 					]
 				}
 			},
