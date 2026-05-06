@@ -20,7 +20,7 @@ import com.Duoc.SceneIt.service.WatchlistService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/v1/watchslist")
+@RequestMapping("/api/v1/watchlist")
 public class WatchlistController {
 
     @Autowired
