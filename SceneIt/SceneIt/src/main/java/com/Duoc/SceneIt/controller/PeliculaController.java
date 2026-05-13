@@ -1,5 +1,6 @@
 package com.Duoc.SceneIt.controller;
 
+import com.Duoc.SceneIt.dto.PeliculaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -64,5 +65,17 @@ public class PeliculaController {
         peliculaService.deletePelicula(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/por-genero")
+    public ResponseEntity<List<PeliculaDTO>> PeliculasPorGenero(){
+        System.out.println("[PeliculaController] -> PeliculasPorGenero");
+        return ResponseEntity.ok(peliculaService.getPeliculaDTO());
+    }
+    @GetMapping("/test-error")
+    public ResponseEntity<Pelicula> testError(){
+        System.out.println("[PeliculaController] -> testError");
+        throw new RuntimeException("Este es un error de prueba lanzado intencionalmente para compombrar GlobalExceptionHandler");
+    }
+    
 }
 

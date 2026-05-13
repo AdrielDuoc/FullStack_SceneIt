@@ -2,6 +2,7 @@ package com.Duoc.SceneIt.service;
 
 import java.util.List;
 
+import com.Duoc.SceneIt.dto.PeliculaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.Duoc.SceneIt.modelo.Pelicula;
@@ -35,4 +36,15 @@ public class PeliculaService {
         }
         return peliculaRepository.save(pelicula);
     }
+
+    public List<PeliculaDTO> getPeliculaDTO(){
+        return peliculaRepository.findAll().stream()
+        .map(p -> new PeliculaDTO(
+            p.getTitulo_pelicula(),
+            p.getGenero_pelicula(),
+            p.getProductora().getNombre_productora()
+        ))
+        .toList();
+    }
+
 }
