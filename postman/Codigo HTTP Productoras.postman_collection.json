@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e11e0101-871b-406b-9d18-342d5afe9f17",
+		"_postman_id": "6aad0e08-4234-41d8-96ac-de3ffc143d30",
 		"name": "Codigo HTTP Productoras",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -21,6 +21,28 @@
 						"api",
 						"v1",
 						"productoras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Productora por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/productoras/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"productoras",
+						"1"
 					]
 				}
 			},
@@ -57,10 +79,19 @@
 			"response": []
 		},
 		{
-			"name": "Borrar Productora",
+			"name": "Actualizar Productora",
 			"request": {
-				"method": "DELETE",
+				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre_productora\":\"DC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:8080/api/v1/productoras/1",
 					"protocol": "http",
@@ -79,21 +110,12 @@
 			"response": []
 		},
 		{
-			"name": "Actualizar Productora",
+			"name": "Borrar Productora",
 			"request": {
-				"method": "PUT",
+				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre_productora\":\"Marvel\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/productoras/2",
+					"raw": "http://localhost:8080/api/v1/productoras/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -103,7 +125,7 @@
 						"api",
 						"v1",
 						"productoras",
-						"2"
+						"1"
 					]
 				}
 			},

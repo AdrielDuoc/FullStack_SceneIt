@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0b2b4236-96ac-4fc9-9b76-bd2999926d8e",
+		"_postman_id": "92807027-05f3-45ae-bd23-e6e520617ce7",
 		"name": "Codigo HTTP Usuarios",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -27,10 +27,41 @@
 			"response": []
 		},
 		{
+			"name": "Obtener Usuario por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/usuarios/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Agregar Usuario",
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre_usuario\":\"Gustavo\",\r\n    \"apellido_usuario\":\"Saavedra\",\r\n    \"email_usuario\":\"GSaa@gmail.com\",\r\n    \"contraseña_usuario\":\"123456\",\r\n    \"fecha_creacion_cuenta_usuario\":\"30-04-2024\",\r\n    \"edad_usuario\":16\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:8080/api/v1/usuarios",
 					"protocol": "http",
@@ -48,12 +79,21 @@
 			"response": []
 		},
 		{
-			"name": "borrar usuario",
+			"name": "Actualizar Usuario",
 			"request": {
-				"method": "DELETE",
+				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre_usuario\": \"Joaquin\",\r\n    \"apellido_usuario\": \"Lobdadwaos\",\r\n    \"email_usuario\": \"Mlobs@gmaiawdawdl.com\",\r\n    \"contraseña_usuario\": \"98765\",\r\n    \"fecha_creacion_cuenta_usuario\":\"30-05-2015\",\r\n    \"edad_usuario\":1945\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/usuarios/2",
+					"raw": "http://localhost:8080/api/v1/usuarios/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -63,26 +103,17 @@
 						"api",
 						"v1",
 						"usuarios",
-						"2"
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Actualizar Usuario",
+			"name": "borrar usuario",
 			"request": {
-				"method": "PUT",
+				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre_usuario\": \"Joaquin\",\r\n    \"apellido_usuario\": \"Lobdadwaos\",\r\n    \"email_usuario\": \"Mlobs@gmaiawdawdl.com\",\r\n    \"contraseña_usuario\": \"123gfawgawg4abcd\",\r\n    \"fecha_creacion_cuenta_usuario\": 202324,\r\n    \"edad_usuario\":1945\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "http://localhost:8080/api/v1/usuarios/1",
 					"protocol": "http",

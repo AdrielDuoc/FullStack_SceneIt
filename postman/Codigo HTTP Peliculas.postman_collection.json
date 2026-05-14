@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2c743959-325f-432d-8496-f81eadc6477d",
+		"_postman_id": "1a9256a3-5e15-45f7-bdf0-e0ab725646b4",
 		"name": "Codigo HTTP Peliculas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -27,13 +27,35 @@
 			"response": []
 		},
 		{
+			"name": "Obtener Pelicula por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/peliculas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"peliculas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Agregar Pelicula",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"titulo_pelicula\": \"Rapidos y furiosos 6\",\r\n    \"autor\":{\r\n        \"id_autor\":2,\r\n        \"nombre_autor\":\"Matias\",\r\n        \"apellido_autor\":\"Vallejos\",\r\n        \"edad_autor\":25\r\n    },\r\n    \"descripcion\":\"Algo de pelicula\",\r\n    \"genero_pelicula\":\"Accion\",\r\n    \"duracion\":\"2 Hrs y 12 Minutos\",\r\n    \"fecha_estreno_pelicula\":\"20-05-2012\",\r\n    \"productora\":{\r\n        \"id_productora\":2,\r\n        \"nombre_productora\":\"Marvel\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"titulo_pelicula\": \"Rapidos y furiosos 6\",\r\n    \"autor\":{\r\n        \"id_autor\":1,\r\n        \"nombre_autor\":\"Matias\",\r\n        \"apellido_autor\":\"Vallejos\",\r\n        \"edad_autor\":25\r\n    },\r\n    \"descripcion\":\"Algo de pelicula\",\r\n    \"genero_pelicula\":\"Accion\",\r\n    \"duracion\":\"2 Hrs y 12 Minutos\",\r\n    \"fecha_estreno_pelicula\":\"20-05-2012\",\r\n    \"productora\":{\r\n        \"id_productora\":1,\r\n        \"nombre_productora\":\"Marvel\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -57,10 +79,19 @@
 			"response": []
 		},
 		{
-			"name": "Borrar Pelicula",
+			"name": "Actualizar Peliculas",
 			"request": {
-				"method": "DELETE",
+				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"titulo_pelicula\": \"Rapidos y furiosos 8\",\r\n        \"autor\": {\r\n            \"id_autor\": 1,\r\n            \"nombre_autor\": \"Matias\",\r\n            \"apellido_autor\": \"Vallejos\",\r\n            \"edad_autor\": 25\r\n        },\r\n        \"descripcion\": \"Algo de pelicula\",\r\n        \"genero_pelicula\": \"Accion\",\r\n        \"duracion\": \"2 Hrs y 12 Minutos\",\r\n        \"fecha_estreno_pelicula\": \"20-05-2012\",\r\n        \"productora\": {\r\n            \"id_productora\": 1,\r\n            \"nombre_productora\": \"Marvel\"\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:8080/api/v1/peliculas/1",
 					"protocol": "http",
@@ -79,21 +110,12 @@
 			"response": []
 		},
 		{
-			"name": "Actualizar Peliculas",
+			"name": "Borrar Pelicula",
 			"request": {
-				"method": "PUT",
+				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n        \"titulo_pelicula\": \"Rapidos y furiosos 8\",\r\n        \"autor\": {\r\n            \"id_autor\": 2,\r\n            \"nombre_autor\": \"Matias\",\r\n            \"apellido_autor\": \"Vallejos\",\r\n            \"edad_autor\": 25\r\n        },\r\n        \"descripcion\": \"Algo de pelicula\",\r\n        \"genero_pelicula\": \"Accion\",\r\n        \"duracion\": \"2 Hrs y 12 Minutos\",\r\n        \"fecha_estreno_pelicula\": \"20-05-2012\",\r\n        \"productora\": {\r\n            \"id_productora\": 2,\r\n            \"nombre_productora\": \"Marvel\"\r\n        }\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:8080/api/v1/peliculas/2",
+					"raw": "http://localhost:8080/api/v1/peliculas/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -103,7 +125,7 @@
 						"api",
 						"v1",
 						"peliculas",
-						"2"
+						"1"
 					]
 				}
 			},
