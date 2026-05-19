@@ -141,6 +141,11 @@ Cada modelo tiene tambien sus caracteristicas como se ven a continuacion;
 
 En el package solamente colocamos la anotacion **@Repository** y hacemos un **extends JpaRepository<Modelo, Integer>** que lo que hace es crear de forma automatica todos los metodos necesarios para mas adelante como **.findAll(), .save(), .findById(), ect** 
 
+```java
+@Repository
+public interface AutorRepository extends JpaRepository<Autor, Integer> { }
+```
+
 ---
 
 ### Service
@@ -262,6 +267,26 @@ En el controller construimos los metodos HTTP
         return ResponseEntity.noContent().build();
     }
 ```
+---
+
+El proyecto tiene un total de 6 End Points que son las siguientes
+
+#### End Points
+>
+> Controller Autor: `http://localhost:8080/api/v1/autores`
+>
+> Controller Pelicula: `http://localhost:8080/api/v1/peliculas`
+>
+> Controller Productora: `http://localhost:8080/api/v1/productoras`
+>
+> Controller Usuario: `http://localhost:8080/api/v1/usuarios`
+>
+> Controller Watchlist: `http://localhost:8080/api/v1/watchlist`
+>
+> Controller Weather(API): `http://localhost:8080/api/v1/clima`
+>
+
+
 
  ## **autores**
  - [Javier Fuentealba](https://github.com/Javier9897)
