@@ -269,24 +269,65 @@ En el controller construimos los metodos HTTP
 ```
 ---
 
-El proyecto tiene un total de 6 End Points que son las siguientes
+El proyecto tiene un total de 6 End Points para acceder a sus metodos HTTP estas son:
 
 #### End Points
->
-> Controller Autor: `http://localhost:8080/api/v1/autores`
->
-> Controller Pelicula: `http://localhost:8080/api/v1/peliculas`
->
-> Controller Productora: `http://localhost:8080/api/v1/productoras`
->
-> Controller Usuario: `http://localhost:8080/api/v1/usuarios`
->
-> Controller Watchlist: `http://localhost:8080/api/v1/watchlist`
->
-> Controller Weather(API): `http://localhost:8080/api/v1/clima`
->
 
+ **Controller Autor:** `http://localhost:8080/api/v1/autores`
 
+ **Controller Pelicula:** `http://localhost:8080/api/v1/peliculas`
+
+ **Controller Productora:** `http://localhost:8080/api/v1/productoras`
+
+ **Controller Usuario:** `http://localhost:8080/api/v1/usuarios`
+
+ **Controller Watchlist:** `http://localhost:8080/api/v1/watchlist`
+
+ **Controller Weather(API):** `http://localhost:8080/api/v1/clima`
+ 
+---
+
+### DTO
+
+La funcionalidad de el package **DTO** es agarrar caracteristicas de otros modelos con la finalidad de tener varias caracteristicas de dos modelos en un solo **"modelo"**
+
+```java
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class PeliculaDTO {
+
+    private String titulo_pelicula;
+    private String genero_pelicula;
+    private String nombre_productora;
+
+}
+```
+
+Despues de crear el DTO creamos el metodo para llamar al DTO dentro del package service del que estemos haciendo un DTO
+
+```java
+    public List<PeliculaDTO> getPeliculaDTO(){
+        return peliculaRepository.findAll().stream()
+        .map(p -> new PeliculaDTO(
+            p.getTitulo_pelicula(),
+            p.getGenero_pelicula(),
+            p.getProductora().getNombre_productora()
+        ))
+        .toList();
+    }
+```
+
+Finalmente crearemos su metodo HTTP dentro del package controller para llamar al DTO
+
+```java
+    @GetMapping("/por-genero")
+    public ResponseEntity<List<PeliculaDTO>> PeliculasPorGenero(){
+        System.out.println("[PeliculaController] -> PeliculasPorGenero");
+        return ResponseEntity.ok(peliculaService.getPeliculaDTO());
+```
+---
 
  ## **autores**
  - [Javier Fuentealba](https://github.com/Javier9897)
