@@ -3,6 +3,9 @@ SceneIt es un proyecto de una "Watchlist" que consiste en una app que permita a 
 
 La finalidad de esta app es que los usuarios que ocupen la app puedan organizarce a la hora de querer ver peliculas que tengan pendiente.
 
+## Indice
+1.- [Estructura del Proyecto](#estructura-del-proyecto)
+
 ---
 >[!NOTE]
 >
@@ -33,7 +36,27 @@ La finalidad de esta app es que los usuarios que ocupen la app puedan organizarc
 >
 >---
 ---
-## Modelo del Proyecto
+## Estructura del Proyecto
+
+Dentro del codigo del proyecto hay en total de 7 packages(Archivos) los cuales tenmos;
+
+-[Model]
+-[repository]
+-[service]
+-[controller]
+-[dto]
+-[exception]
+-[config]
+
+Para ir en orden comenzaremos con el package principal el cual seria **model** 
+
+
+
+
+
+
+
+## Modelo
 
 Para este Proyecto declaramos los modelos que consideramos mas importante para la Watchlist, estos son;
 
