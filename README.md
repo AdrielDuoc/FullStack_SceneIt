@@ -72,14 +72,16 @@ WebFlux es una dependencia que nos permite hacer conexiones con **APIs** externa
 
 MySQL Connector es la libreria que nos permite conectarnos a nuestra Base de Datos MySQL
 
+---
+
 ## Packages
 
 Dentro del codigo del proyecto hay en total de 7 packages(Archivos) los cuales tenemos;
 
 - [model](#model)
 - [repository](#repository)
-- [service]
-- [controller]
+- [service](#service)
+- [controller](#controller)
 - [dto]
 - [exception]
 - [config]
@@ -137,9 +139,129 @@ Cada modelo tiene tambien sus caracteristicas como se ven a continuacion;
 
 ### Repository
 
+En el package solamente colocamos la anotacion **@Repository** y hacemos un **extends JpaRepository<Modelo, Integer>** que lo que hace es crear de forma automatica todos los metodos necesarios para mas adelante como **.findAll(), .save(), .findById(), ect** 
 
+---
 
+### Service
 
+El package service colocamos la anotacion **@Service** donde se crean los metodos que se utilizaran en controller, en ella utilizaremos los mismo metodos creados en el package repository utilizando la anotacion **@Autowired** para utilizar los metodos
+
+```java
+    @Autowired
+    private AutorRepository autorRepository;
+```
+
+Dentro del proyecto creamos principalmente 5 metodos que utilizaremos para cada service estos son;
+
+#### **Obtener todos los datos**
+
+```java
+   public List<Autor> getAutor(){
+       return autorRepository.findAll();
+  }
+```
+#### **Guardar datos**
+
+```java
+   public Autor saveAutor(Autor autor){
+       return autorRepository.save(autor);
+    }
+```
+#### **Obtener dato por id**
+
+```java
+   public Autor getAutorId(Integer id){
+       return autorRepository.findById(id).orElse(null);
+    }
+```
+#### **Actualizar datos**
+
+```java
+   public Autor updateAutor(Autor autor){
+       if(!autorRepository.existsById(autor.getId_autor())){
+              return null;
+       }
+       return autorRepository.save(autor);
+   }
+```
+#### **Borrar datos**
+
+```java
+   public void deleteAutor(Integer id){
+       autorRepository.deleteById(id);
+   }
+```
+---
+
+### Controller
+
+En el package controller creamos la conexion del Back-End y el Front-End para ello colocamos dentro la anotacion **@RestController** y **@RequestMapping("/api/v1/modelo")**
+
+```java
+@RestController
+@RequestMapping("api/v1/autores")
+public class AutorController {
+```
+
+Tambien hacemos la conexion con el package [service](#service) y utilizar los metodos creados en service
+
+```java
+    @Autowired
+    private AutorService autorService;
+```
+En el controller construimos los metodos HTTP
+
+#### Obtener todo
+```java
+    @GetMapping
+    public ResponseEntity<List<Autor>> getAllAutores(){
+        System.out.println("[AutorController] -> getAllAutores");
+        return ResponseEntity.ok(autorService.getAutor());
+    }
+```
+#### Obtener por id
+```java
+    @GetMapping("/{id}")
+    public ResponseEntity<Autor> getUsuarioId(@PathVariable Integer id){
+        System.out.println("[AutorController] -> getUsuarioId id=" + id);
+        Autor autor = autorService.getAutorId(id);
+        if(autor == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(autor);
+    }
+```
+#### Guardar
+```java
+    @PostMapping
+    public ResponseEntity<Autor> saveAutor(@Valid @RequestBody Autor autor){
+        System.out.println("[AutorController] -> saveAutor");
+        return ResponseEntity.status(HttpStatus.CREATED).body(autorService.saveAutor(autor));
+    }
+```
+#### Actualizar
+```java
+    @PutMapping("/{id}")
+    public ResponseEntity<Autor> updateAutor(@PathVariable Integer id, @Valid @RequestBody Autor autor){
+        System.out.println("[AutorController] -> updateAutor id=" + id);
+        autor.setId_autor(id);
+        Autor actualizado = autorService.updateAutor(autor);
+        if(actualizado == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(actualizado);
+    }
+```
+#### Borrar
+```java
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> removeAutor(@PathVariable Integer id){
+        System.out.println("[AutorController] -> deleteAutor id=" + id);
+        autorService.deleteAutor(id);
+        return ResponseEntity.noContent().build();
+    }
+```
 
  ## **autores**
  - [Javier Fuentealba](https://github.com/Javier9897)
