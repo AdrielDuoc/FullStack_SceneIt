@@ -14,7 +14,7 @@ La finalidad de esta app es que los usuarios que ocupen la app puedan organizarc
 >---
 >[HeidiSQL]
 >
->HeidiSQL es una base de datos, en el cual almacenaremos todos los datos atraves de un POST
+>HeidiSQL es una base de datos, en el cual almacenaremos todos los datos atraves de un POST.
 >
 >[DESCARGA HEIDISQL](https://heidisql.com/download.php)
 >
@@ -22,7 +22,7 @@ La finalidad de esta app es que los usuarios que ocupen la app puedan organizarc
 >
 >[Laragon]
 >
->Laragon es una herramienta que sera utilizada para la conexion de la base de datos ocupando el sistema de MySQL
+>Laragon es una herramienta que sera utilizada para la conexion de la base de datos ocupando el sistema de MySQL.
 >
 >[DESCARGA LARAGON](https://laragon.org/download)
 >
@@ -30,38 +30,65 @@ La finalidad de esta app es que los usuarios que ocupen la app puedan organizarc
 >
 >[Postman]
 >
->Postman sera utilizada para utilizar los metodos https(GET, POST, PUT y DELETE) para interactuar con la base de datos
+>Postman sera utilizada para utilizar los metodos https(GET, POST, PUT y DELETE) para interactuar con la base de datos.
 >
 >[DESCARGA POSTMAN](https://www.postman.com/downloads)
 >
 >---
 ---
-## Estructura del Proyecto
+# Estructura del Proyecto
 
-Dentro del codigo del proyecto hay en total de 7 packages(Archivos) los cuales tenmos;
+Para comenzar con el proyecto se utilizaron las siguientes **dependencias** que nos permiten optimizar el codigo o tambien **realizar** la **conexion** con otras **herramientas**, **APIs**, ect.
 
-1.- [model](#model)
-....* [package model]
+## Dependencias
 
-- [repository]
+### Lombok
 
+Lombok nos permite generar automaticamente todos los **metodos, Getters, Setters y constructores** de los [modelos](#model) del poyecto atraves de la anotacion **@Data, @AllArgsConstructor y @NoArgsConstructor**.
+
+### DataJPA
+
+DataJPA sirve para declarar nuestros [modelos](#model) como **entidades de una Base de Datos** para usarla se necesita usar la anotacion **@Data** y para declarar el modelo como entidad se usa la anotacion **@Entity** y luego la anotacion **@Table** que nos permite asignarle un nombre para el modelo en nuestra base de datos.
+
+### Validation
+
+Validation la utilizamos para declarar algunas caracteristicas de nuestros [modelos](#model) como tipo Id con la anotacion @Id.
+
+Tambien la usamos para agregarles validaciones a las caracteristicas como por ejemplo hacer que sean **NotNull** o **NotBlank** con las anotaciones **@NotNull y @NotBlank**.
+
+### WebMVC
+
+WebMVC es una dependencia que se utiliza dentro del package de [controller]() con la anotacion **@RestController** esta nos permite hacer el **puente entre el Back-End y el Front-End**.
+
+Esta libreria se utiliza para crear el EndPoint del controller con la anotacion **@RequestMapping** y tambien nos permite hacer los llamados **HTTP(GET, POST, PUT y DELATE)** con las anotaciones **@GetMapping, @PostMapping, @PutMapping y @DeleteMapping**.
+
+Utilizaremos las anotaciones **@Valid** que su funcion es validar los argumentos que se ingresan dentro del metodo, **@RequestBody** que se utiliza para recibir un objeto **JSON** entero para convertirlo en un objeto y **@PathVariabe** que se utiliza para atrapar datos que vienen en una **URL** como el **Id** del modelo.
+
+### WebFlux
+
+WebFlux es una dependencia que nos permite hacer conexiones con **APIs** externas
+
+### MySQL Connector
+
+MySQL Connector es la libreria que nos permite conectarnos a nuestra Base de Datos MySQL
+
+## Packages
+
+Dentro del codigo del proyecto hay en total de 7 packages(Archivos) los cuales tenemos;
+
+- [model](#model)
+- [repository](#repository)
 - [service]
 - [controller]
 - [dto]
 - [exception]
 - [config]
 
-Para ir en orden comenzaremos con el primer package que se necesita para comenzar con el proyecto, el cual seria el package **model** 
 
+### Model
+Para ir en orden comenzaremos con el **Package** de **model** en cual declaramos las entidades o modelos que consideramos mas importante.
 
-
-
-
-
-
-## Model
-
-Para este Proyecto declaramos los modelos que consideramos mas importante para la Watchlist, estos son;
+Cada modelo tiene tambien sus caracteristicas como se ven a continuacion;
 
 >---
 >[Usuario]
@@ -107,6 +134,10 @@ Para este Proyecto declaramos los modelos que consideramos mas importante para l
 > - usuario
 > - tamano_watchlist
 >---
+
+### Repository
+
+
 
 
 
