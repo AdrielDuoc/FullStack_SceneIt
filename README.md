@@ -40,23 +40,26 @@ La finalidad de esta app es que los usuarios que ocupen la app puedan organizarc
 
 Dentro del codigo del proyecto hay en total de 7 packages(Archivos) los cuales tenmos;
 
--[Model]
--[repository]
--[service]
--[controller]
--[dto]
--[exception]
--[config]
+1.- [model](#model)
+....* [package model]
 
-Para ir en orden comenzaremos con el package principal el cual seria **model** 
+- [repository]
 
+- [service]
+- [controller]
+- [dto]
+- [exception]
+- [config]
 
-
-
-
+Para ir en orden comenzaremos con el primer package que se necesita para comenzar con el proyecto, el cual seria el package **model** 
 
 
-## Modelo
+
+
+
+
+
+## Model
 
 Para este Proyecto declaramos los modelos que consideramos mas importante para la Watchlist, estos son;
 
