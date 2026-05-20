@@ -4,8 +4,8 @@ SceneIt es un proyecto de una "Watchlist" que consiste en una app que permita a 
 La finalidad de esta app es que los usuarios que ocupen la app puedan organizarce a la hora de querer ver peliculas que tengan pendiente.
 
 ## Indice
-1.- [Estructura del Proyecto](#estructura-del-proyecto)
-    * [Dependencias](#dependencias)
+1. [Estructura del Proyecto](#estructura-del-proyecto)
+     * 1.1 [Dependencias](#dependencias)
 
 ---
 >[!NOTE]
