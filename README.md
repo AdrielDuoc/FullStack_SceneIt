@@ -5,6 +5,7 @@ La finalidad de esta app es que los usuarios que ocupen la app puedan organizarc
 
 ## Indice
 1.- [Estructura del Proyecto](#estructura-del-proyecto)
+    * [Dependencias](#dependencias)
 
 ---
 >[!NOTE]
@@ -328,6 +329,8 @@ Finalmente crearemos su metodo HTTP dentro del package controller para llamar al
         return ResponseEntity.ok(peliculaService.getPeliculaDTO());
 ```
 ---
+
+
 
  ## **autores**
  - [Javier Fuentealba](https://github.com/Javier9897)
