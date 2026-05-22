@@ -3,11 +3,6 @@ SceneIt es un proyecto de una "Watchlist" que consiste en una app que permita a 
 
 La finalidad de esta app es que los usuarios que ocupen la app puedan organizarce a la hora de querer ver peliculas que tengan pendiente.
 
-## Indice
- 1. [Estructura del Proyecto](#estructura-del-proyecto)
-     * 1.1. [Dependencias](#dependencias)
-     * 1.2. [Packages](#packages)
-
 ---
 >[!NOTE]
 >
@@ -37,6 +32,13 @@ La finalidad de esta app es que los usuarios que ocupen la app puedan organizarc
 >[DESCARGA POSTMAN](https://www.postman.com/downloads)
 >
 >---
+---
+
+## Indice
+ 1. [Estructura del Proyecto](#estructura-del-proyecto)
+     * 1.1. [Dependencias](#dependencias)
+     * 1.2. [Packages](#packages)
+
 ---
 # Estructura del Proyecto
 
@@ -78,15 +80,16 @@ MySQL Connector es la libreria que nos permite conectarnos a nuestra Base de Dat
 
 ## Packages
 
-Dentro del codigo del proyecto hay en total de 7 packages(Archivos) los cuales tenemos;
+Dentro del codigo del proyecto hay en total de 8 packages(Archivos) los cuales tenemos;
 
 - [model](#model)
 - [repository](#repository)
 - [service](#service)
 - [controller](#controller)
-- [dto]
-- [exception]
-- [config]
+- [dto](#dto)
+- [exception](#exception)
+- [config](#config)
+- [application.properties](#application.properties)
 
 
 ### Model
@@ -330,6 +333,101 @@ Finalmente crearemos su metodo HTTP dentro del package controller para llamar al
         return ResponseEntity.ok(peliculaService.getPeliculaDTO());
 ```
 ---
+
+### Exception
+
+En este package es practicamente nuestra red de seguridad lo que hace es mostrar los errores que pueden haber a la hora de interactuar con la base de datos pero de una forma mucho mas entendible,
+con la anotacion **@RestControllerAdvice** captura el error y los transforma en estas tres situaciones
+
+#### Error 400 Bad Request
+
+En el caso de que la anotacion **@Valid** en los metodos del controller falla la anotacion antes mencionada toma ese error y lo transforma a un error mas amigable para entender.
+
+
+
+```java
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiError> handleValidationErrors(MethodArgumentNotValidException ex) {
+
+        // Recorre todos los campos que fallaron la validación y arma un mensaje
+        StringBuilder detalle = new StringBuilder();
+        for (FieldError campo : ex.getBindingResult().getFieldErrors()) {
+            detalle.append(campo.getField())           // nombre del campo (ej: "nombre")
+                   .append(": ")
+                   .append(campo.getDefaultMessage())  // mensaje de la anotación (ej: "no debe estar vacío")
+                   .append(", ");
+        }
+
+        ApiError error = new ApiError(400, "Error de validación", detalle.toString());
+        return ResponseEntity.badRequest().body(error);
+    }
+```
+#### Error 500 Internal Server Error
+
+En este caso sigue la misma logica por detras que la del **error 400** solo que este error se fija en problemas como que la base de datos de caiga o que falle la conexion
+
+```java
+    // Maneja cualquier otra excepción no esperada → 500 Internal Server Error
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiError> handleGenericError(Exception ex) {
+        ApiError error = new ApiError(500, "Error interno del servidor", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+    }
+```
+
+### config
+
+Este package tiene como funcion configurar servicios externos en este caso sera utilizada para configurar la **API Open-Meteo** la cual se explicara mas afondo un poco mas adelante.
+
+```java
+@Configuration
+public class WebClientConfig {
+
+    @Value("${openmeteo.base-url}")
+    private String openMeteoBaseUrl;
+
+    @Bean
+    public WebClient weatherWebClient() {
+        return WebClient.builder()
+                .baseUrl(openMeteoBaseUrl)
+                .defaultHeader("Accept", "application/json")
+                .build();
+    }
+
+}
+```
+
+La funcion de este codigo comienza con la anotacion **@Configuration** declara que este codigo es de tipo configuracion para construir la app, luego la linea **@Value("${openmeteo.base-url}")** hace un llamado
+para que busque una archivo de texto dentro de application.properties que seria la **URL** de la **API Open-Meteo** y guarda en la variable **openMeteoBaseUrl** y finalmente se construye el metodo de configuracion
+de la **API**, en este caso solo pide que **devuelva los datos que te da la API en formato JSON**
+
+## Application.properties
+
+En el package application.properties que vendria a ser la configuracion principal de nuestro proyecto es esta podemos ver el codigo para realizar la conexion con MySQL
+
+```java
+# Conexion a MySQL local
+spring.datasource.url=jdbc:mysql://localhost:3307/FullStack_SceneIt?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+```
+Tambien podemos ver la configuracion de Hibernate/JPA
+
+```java
+# Hibernate / JPA
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+```
+Y finalmente la configuracion de la API Open-Meteo
+
+```java
+# Open-Meteo API (clima, sin API key)
+openmeteo.base-url=https://api.open-meteo.com
+```
+
+## APIs
 
 
 
