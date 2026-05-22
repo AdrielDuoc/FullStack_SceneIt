@@ -38,6 +38,7 @@ La finalidad de esta app es que los usuarios que ocupen la app puedan organizarc
  1. [Estructura del Proyecto](#estructura-del-proyecto)
      * 1.1. [Dependencias](#dependencias)
      * 1.2. [Packages](#packages)
+ 2. [APIs](#apis)
 
 ---
 # Estructura del Proyecto
@@ -70,11 +71,11 @@ Utilizaremos las anotaciones **@Valid** que su funcion es validar los argumentos
 
 ### WebFlux
 
-WebFlux es una dependencia que nos permite hacer conexiones con **APIs** externas
+WebFlux es una dependencia que nos permite hacer conexiones con **APIs** externas.
 
 ### MySQL Connector
 
-MySQL Connector es la libreria que nos permite conectarnos a nuestra Base de Datos MySQL
+MySQL Connector es la libreria que nos permite conectarnos a nuestra Base de Datos MySQL.
 
 ---
 
@@ -144,7 +145,7 @@ Cada modelo tiene tambien sus caracteristicas como se ven a continuacion;
 
 ### Repository
 
-En el package solamente colocamos la anotacion **@Repository** y hacemos un **extends JpaRepository<Modelo, Integer>** que lo que hace es crear de forma automatica todos los metodos necesarios para mas adelante como **.findAll(), .save(), .findById(), ect** 
+En el package solamente colocamos la anotacion **@Repository** y hacemos un **extends JpaRepository<Modelo, Integer>** que lo que hace es crear de forma automatica todos los metodos necesarios para mas adelante como **.findAll(), .save(), .findById(), ect** .
 
 ```java
 @Repository
@@ -155,7 +156,7 @@ public interface AutorRepository extends JpaRepository<Autor, Integer> { }
 
 ### Service
 
-El package service colocamos la anotacion **@Service** donde se crean los metodos que se utilizaran en controller, en ella utilizaremos los mismo metodos creados en el package repository utilizando la anotacion **@Autowired** para utilizar los metodos
+El package service colocamos la anotacion **@Service** donde se crean los metodos que se utilizaran en controller, en ella utilizaremos los mismo metodos creados en el package repository utilizando la anotacion **@Autowired** para utilizar los metodos.
 
 ```java
     @Autowired
@@ -164,6 +165,8 @@ El package service colocamos la anotacion **@Service** donde se crean los metodo
 
 Dentro del proyecto creamos principalmente 5 metodos que utilizaremos para cada service estos son;
 
+---
+
 #### **Obtener todos los datos**
 
 ```java
@@ -171,6 +174,7 @@ Dentro del proyecto creamos principalmente 5 metodos que utilizaremos para cada 
        return autorRepository.findAll();
   }
 ```
+---
 #### **Guardar datos**
 
 ```java
@@ -178,6 +182,7 @@ Dentro del proyecto creamos principalmente 5 metodos que utilizaremos para cada 
        return autorRepository.save(autor);
     }
 ```
+---
 #### **Obtener dato por id**
 
 ```java
@@ -185,6 +190,7 @@ Dentro del proyecto creamos principalmente 5 metodos que utilizaremos para cada 
        return autorRepository.findById(id).orElse(null);
     }
 ```
+---
 #### **Actualizar datos**
 
 ```java
@@ -195,6 +201,7 @@ Dentro del proyecto creamos principalmente 5 metodos que utilizaremos para cada 
        return autorRepository.save(autor);
    }
 ```
+---
 #### **Borrar datos**
 
 ```java
@@ -206,7 +213,7 @@ Dentro del proyecto creamos principalmente 5 metodos que utilizaremos para cada 
 
 ### Controller
 
-En el package controller creamos la conexion del Back-End y el Front-End para ello colocamos dentro la anotacion **@RestController** y **@RequestMapping("/api/v1/modelo")**
+En el package controller creamos la conexion del Back-End y el Front-End para ello colocamos dentro la anotacion **@RestController** y **@RequestMapping("/api/v1/modelo")**.
 
 ```java
 @RestController
@@ -214,12 +221,13 @@ En el package controller creamos la conexion del Back-End y el Front-End para el
 public class AutorController {
 ```
 
-Tambien hacemos la conexion con el package [service](#service) y utilizar los metodos creados en service
+Tambien hacemos la conexion con el package [service](#service) y utilizar los metodos creados en service.
 
 ```java
     @Autowired
     private AutorService autorService;
 ```
+---
 En el controller construimos los metodos HTTP
 
 #### Obtener todo
@@ -230,6 +238,7 @@ En el controller construimos los metodos HTTP
         return ResponseEntity.ok(autorService.getAutor());
     }
 ```
+---
 #### Obtener por id
 ```java
     @GetMapping("/{id}")
@@ -242,6 +251,7 @@ En el controller construimos los metodos HTTP
         return ResponseEntity.ok(autor);
     }
 ```
+---
 #### Guardar
 ```java
     @PostMapping
@@ -250,6 +260,7 @@ En el controller construimos los metodos HTTP
         return ResponseEntity.status(HttpStatus.CREATED).body(autorService.saveAutor(autor));
     }
 ```
+---
 #### Actualizar
 ```java
     @PutMapping("/{id}")
@@ -263,6 +274,7 @@ En el controller construimos los metodos HTTP
         return ResponseEntity.ok(actualizado);
     }
 ```
+---
 #### Borrar
 ```java
     @DeleteMapping("/{id}")
@@ -294,7 +306,7 @@ El proyecto tiene un total de 6 End Points para acceder a sus metodos HTTP estas
 
 ### DTO
 
-La funcionalidad de el package **DTO** es agarrar caracteristicas de otros modelos con la finalidad de tener varias caracteristicas de dos modelos en un solo **"modelo"**
+La funcionalidad de el package **DTO** es agarrar caracteristicas de otros modelos con la finalidad de tener varias caracteristicas de dos modelos en un solo **"modelo"**.
 
 ```java
 @Data
@@ -310,7 +322,7 @@ public class PeliculaDTO {
 }
 ```
 
-Despues de crear el DTO creamos el metodo para llamar al DTO dentro del package service del que estemos haciendo un DTO
+Despues de crear el DTO creamos el metodo para llamar al DTO dentro del package service del que estemos haciendo un DTO.
 
 ```java
     public List<PeliculaDTO> getPeliculaDTO(){
@@ -324,7 +336,7 @@ Despues de crear el DTO creamos el metodo para llamar al DTO dentro del package 
     }
 ```
 
-Finalmente crearemos su metodo HTTP dentro del package controller para llamar al DTO
+Finalmente crearemos su metodo HTTP dentro del package controller para llamar al DTO.
 
 ```java
     @GetMapping("/por-genero")
@@ -337,8 +349,9 @@ Finalmente crearemos su metodo HTTP dentro del package controller para llamar al
 ### Exception
 
 En este package es practicamente nuestra red de seguridad lo que hace es mostrar los errores que pueden haber a la hora de interactuar con la base de datos pero de una forma mucho mas entendible,
-con la anotacion **@RestControllerAdvice** captura el error y los transforma en estas tres situaciones
+con la anotacion **@RestControllerAdvice** captura el error y los transforma en estas tres situaciones.
 
+---
 #### Error 400 Bad Request
 
 En el caso de que la anotacion **@Valid** en los metodos del controller falla la anotacion antes mencionada toma ese error y lo transforma a un error mas amigable para entender.
@@ -362,9 +375,10 @@ En el caso de que la anotacion **@Valid** en los metodos del controller falla la
         return ResponseEntity.badRequest().body(error);
     }
 ```
+---
 #### Error 500 Internal Server Error
 
-En este caso sigue la misma logica por detras que la del **error 400** solo que este error se fija en problemas como que la base de datos de caiga o que falle la conexion
+En este caso sigue la misma logica por detras que la del **error 400** solo que este error se fija en problemas como que la base de datos de caiga o que falle la conexion.
 
 ```java
     // Maneja cualquier otra excepción no esperada → 500 Internal Server Error
@@ -374,8 +388,8 @@ En este caso sigue la misma logica por detras que la del **error 400** solo que 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }
 ```
-
-### config
+---
+### Config
 
 Este package tiene como funcion configurar servicios externos en este caso sera utilizada para configurar la **API Open-Meteo** la cual se explicara mas afondo un poco mas adelante.
 
@@ -399,11 +413,13 @@ public class WebClientConfig {
 
 La funcion de este codigo comienza con la anotacion **@Configuration** declara que este codigo es de tipo configuracion para construir la app, luego la linea **@Value("${openmeteo.base-url}")** hace un llamado
 para que busque una archivo de texto dentro de application.properties que seria la **URL** de la **API Open-Meteo** y guarda en la variable **openMeteoBaseUrl** y finalmente se construye el metodo de configuracion
-de la **API**, en este caso solo pide que **devuelva los datos que te da la API en formato JSON**
+de la **API**, en este caso solo pide que **devuelva los datos que te da la API en formato JSON**.
+
+---
 
 ## Application.properties
 
-En el package application.properties que vendria a ser la configuracion principal de nuestro proyecto es esta podemos ver el codigo para realizar la conexion con MySQL
+En el package application.properties que vendria a ser la configuracion principal de nuestro proyecto es esta podemos ver el codigo para realizar la conexion con MySQL.
 
 ```java
 # Conexion a MySQL local
@@ -429,8 +445,72 @@ openmeteo.base-url=https://api.open-meteo.com
 
 ## APIs
 
+Ahora explicaremos la API que utilizaremos en este caso por ahora solmente utilizaremos la API llamada Open-Meteo,
+esta API lo que hace es que muestra informacion del clima.
 
+Lo que tendremos que hacer primero es configurar la API en el package [application.properties](#application.properties)
 
+```java
+# Open-Meteo API (clima, sin API key)
+openmeteo.base-url=https://api.open-meteo.com
+```
+
+---
+
+Luego de configurar su URL en el package [config](#config) esta vez configuramos la API para que los datos que se devuelven sean de tipo JSON
+
+```java
+    @Value("${openmeteo.base-url}")
+    private String openMeteoBaseUrl;
+
+    @Bean
+    public WebClient weatherWebClient() {
+        return WebClient.builder()
+                .baseUrl(openMeteoBaseUrl)
+                .defaultHeader("Accept", "application/json")
+                .build();
+    }
+```
+
+---
+
+Despues creamos un DTO para que solo muestre la informacion que nos interese
+
+```java
+    @JsonProperty("current_weather")
+    private CurrentWeather currentWeather;
+
+    @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class CurrentWeather {
+        private Double temperature;
+        private Double windspeed;
+    }
+```
+---
+Finalmente creamos en el end point en el package [controller](#controller)
+
+```java
+@Controller
+@RequestMapping("/api/v1/clima")
+public class WeatherController {
+
+@Autowired
+private WeatherService weatherService;
+
+@GetMapping
+public ResponseEntity<WeatherDTO> clima(
+    @RequestParam(defaultValue = "-33.45") double lat,
+    @RequestParam(defaultValue =  "70.65") double lon){
+
+        System.out.println("[WeatherController] -> clima lat =" + lat + ", lon =" + lon);
+        WeatherDTO resultado = weatherService.obtenerClima(lat, lon);
+        return ResponseEntity.ok(resultado);
+    }
+    
+}
+```
+---
  ## **autores**
  - [Javier Fuentealba](https://github.com/Javier9897)
  - [Adriel Yañez](https://github.com/AdrielDuoc)
