@@ -448,7 +448,7 @@ openmeteo.base-url=https://api.open-meteo.com
 Ahora explicaremos la API que utilizaremos en este caso por ahora solmente utilizaremos la API llamada Open-Meteo,
 esta API lo que hace es que muestra informacion del clima.
 
-Lo que tendremos que hacer primero es configurar la API en el package [application.properties](#application.properties)
+Lo que tendremos que hacer primero es configurar la API en el package [application.properties](#applicationproperties)
 
 ```java
 # Open-Meteo API (clima, sin API key)
