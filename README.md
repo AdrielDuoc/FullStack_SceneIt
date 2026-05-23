@@ -391,7 +391,7 @@ En este caso sigue la misma logica por detras que la del **error 400** solo que 
 ---
 ### Config
 
-Este package tiene como funcion configurar servicios externos en este caso sera utilizada para configurar la **API Open-Meteo** la cual se explicara mas afondo un poco mas adelante.
+Este package tiene como funcion configurar servicios externos en este caso sera utilizada para configurar la **API Open-Meteo** la cual se explicara mas a fondo un poco mas adelante.
 
 ```java
 @Configuration
@@ -419,7 +419,7 @@ de la **API**, en este caso solo pide que **devuelva los datos que te da la API 
 
 ## Application.properties
 
-En el package application.properties que vendria a ser la configuracion principal de nuestro proyecto es esta podemos ver el codigo para realizar la conexion con MySQL.
+En el package **application.properties** que vendria a ser la configuracion principal de nuestro proyecto es esta podemos ver el codigo para realizar la conexion con **MySQL**.
 
 ```java
 # Conexion a MySQL local
@@ -428,7 +428,7 @@ spring.datasource.username=root
 spring.datasource.password=
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
-Tambien podemos ver la configuracion de Hibernate/JPA
+Tambien podemos ver la configuracion de **Hibernate/JPA**.
 
 ```java
 # Hibernate / JPA
@@ -436,7 +436,7 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 ```
-Y finalmente la configuracion de la API Open-Meteo
+Y finalmente la configuracion de la **API Open-Meteo**.
 
 ```java
 # Open-Meteo API (clima, sin API key)
@@ -448,7 +448,7 @@ openmeteo.base-url=https://api.open-meteo.com
 Ahora explicaremos la API que utilizaremos en este caso por ahora solmente utilizaremos la API llamada Open-Meteo,
 esta API lo que hace es que muestra informacion del clima.
 
-Lo que tendremos que hacer primero es configurar la API en el package [application.properties](#applicationproperties)
+Lo que tendremos que hacer primero es configurar la API en el package [application.properties](#applicationproperties).
 
 ```java
 # Open-Meteo API (clima, sin API key)
@@ -457,7 +457,7 @@ openmeteo.base-url=https://api.open-meteo.com
 
 ---
 
-Luego de configurar su URL en el package [config](#config) esta vez configuramos la API para que los datos que se devuelven sean de tipo JSON
+Luego de configurar su URL en el package [config](#config) esta vez configuramos la API para que los datos que se devuelven sean de tipo **JSON**.
 
 ```java
     @Value("${openmeteo.base-url}")
@@ -474,7 +474,7 @@ Luego de configurar su URL en el package [config](#config) esta vez configuramos
 
 ---
 
-Despues creamos un DTO para que solo muestre la informacion que nos interese
+Despues creamos un [DTO](#dto) para que solo muestre la informacion que nos interese.
 
 ```java
     @JsonProperty("current_weather")
@@ -488,7 +488,7 @@ Despues creamos un DTO para que solo muestre la informacion que nos interese
     }
 ```
 ---
-Finalmente creamos en el end point en el package [controller](#controller)
+Finalmente creamos el **controller** de la API junto a su end point en el package [controller](#controller).
 
 ```java
 @Controller
