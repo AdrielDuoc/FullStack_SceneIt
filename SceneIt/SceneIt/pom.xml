@@ -43,7 +43,8 @@
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
 		
-		// Dependencia de swagger
+		 <!--Dependencia de swagger-->
+		 
 		<dependency>
     		<groupId>org.springdoc</groupId>
     		<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
