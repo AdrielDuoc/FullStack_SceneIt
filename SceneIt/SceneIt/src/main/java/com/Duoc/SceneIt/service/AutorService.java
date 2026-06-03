@@ -33,7 +33,7 @@ public class AutorService {
     }
 
     public void deleteAutor(Integer id){
-        autorRepository.deleteById(id);
+        autorRepository.deleteById(id); 
     }
 
 }
