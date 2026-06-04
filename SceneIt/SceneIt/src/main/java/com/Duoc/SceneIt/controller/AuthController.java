@@ -4,6 +4,8 @@ import com.Duoc.SceneIt.dto.AuthRequest;
 import com.Duoc.SceneIt.dto.AuthResponse;
 import com.Duoc.SceneIt.modelo.UsuarioJwt;
 import com.Duoc.SceneIt.repository.UsuarioJwtRepository;
+import com.Duoc.SceneIt.security.JwtUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
