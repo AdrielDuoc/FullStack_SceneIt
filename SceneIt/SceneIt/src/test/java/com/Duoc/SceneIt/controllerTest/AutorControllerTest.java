@@ -36,9 +36,8 @@ public class AutorControllerTest {
         assertNotNull(body);
 
         assertEquals(1, body.getId_autor());
-        assertEquals("Juan", autor.getNombre_autor());
-        assertEquals("Lobos", autor.getApellido_autor());
-        assertEquals(35, autor.getEdad_autor());
+        assertEquals("Juan", body.getNombre_autor());
+        assertEquals("Lobos", body.getApellido_autor());
+        assertEquals(35, body.getEdad_autor());
     }
-
 }
