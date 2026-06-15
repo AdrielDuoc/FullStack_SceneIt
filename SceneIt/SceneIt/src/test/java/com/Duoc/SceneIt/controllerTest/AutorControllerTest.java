@@ -15,6 +15,11 @@ import com.Duoc.SceneIt.service.AutorService;
 @ExtendWith(MockitoExtension.class)
 public class AutorControllerTest {
 
+    /*
+     Asegurate de estar en el directorio correcto
+     FullStack_SceneIt\SceneIt\SceneIt
+    */
+
     @Mock
     private AutorService autorService;
 

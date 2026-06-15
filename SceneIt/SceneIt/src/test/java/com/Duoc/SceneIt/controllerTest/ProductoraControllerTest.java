@@ -17,6 +17,11 @@ import com.Duoc.SceneIt.service.ProductoraService;
 @ExtendWith(MockitoExtension.class)
 public class ProductoraControllerTest {
 
+    /*
+     Asegurate de estar en el directorio correcto
+     FullStack_SceneIt\SceneIt\SceneIt
+    */
+
     @Mock
     private ProductoraService productoraService;
 

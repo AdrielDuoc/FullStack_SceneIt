@@ -19,6 +19,11 @@ import com.Duoc.SceneIt.service.PeliculaService;
 @ExtendWith(MockitoExtension.class)
 public class PeliculaControllerTest {
 
+    /*
+     Asegurate de estar en el directorio correcto
+     FullStack_SceneIt\SceneIt\SceneIt
+    */
+
     @Mock
     private PeliculaService peliculaService;
 

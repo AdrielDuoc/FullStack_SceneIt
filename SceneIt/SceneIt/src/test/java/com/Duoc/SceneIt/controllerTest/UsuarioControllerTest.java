@@ -17,6 +17,11 @@ import com.Duoc.SceneIt.service.UsuarioService;
 @ExtendWith(MockitoExtension.class)
 public class UsuarioControllerTest {
 
+    /*
+     Asegurate de estar en el directorio correcto
+     FullStack_SceneIt\SceneIt\SceneIt
+    */
+
     @Mock
     private UsuarioService usuarioService;
 
